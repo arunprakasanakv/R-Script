@@ -27,3 +27,11 @@ x <- c(1:5);y<-x
 
    # boxplot
    boxplot(mpg~cyl,data=mtcars,main = "car milage",xlab = "number of cylinder", ylab ="gallons")
+
+#violin plot
+   library(vioplot)
+   x1 <- mtcars$mpg[mtcars$cyl == 4]
+   x2 <- mtcars$mpg[mtcars$cyl == 6]
+   x3 <- mtcars$mpg[mtcars$cyl == 8]
+   vioplot(x1,x2,x3,names = c("4 cyl","6 cyl","8 cyl"),col = "gold")
+   title("Violin plots of miles per gallon")
