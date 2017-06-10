@@ -17,3 +17,13 @@ x <- c(1:5);y<-x
    x$color[x$cyl == 6] <-"blue"
    x$color[x$cyl == 8] <-"green"
    dotchart(x$mpg,labels = row.names(x),cex = .7,groups = x$cyl,main = "gas milage by cyl",xlab = "miles per gallon",gcolor = "black",color = x$color)
+
+#   pie chart
+   pie(slice,label = lbls ,main = "pie chart")
+
+# pie3D
+   
+   pie3D(slice,label = lbls ,explode =0.1, main = "pie chart")
+
+   # boxplot
+   boxplot(mpg~cyl,data=mtcars,main = "car milage",xlab = "number of cylinder", ylab ="gallons")
