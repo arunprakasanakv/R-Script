@@ -103,3 +103,17 @@ x <- c(1:5);y<-x
    model <- glm(Survived ~ PClass+Age,data = Titanic)
    summary(model)
    plot(model)
+
+#R with twitter
+   library(twitteR)
+   library(tm)
+   library(wordcloud)
+   setup_twitter_oauth(consumer_key="DmXz1exphGdeLO0HwFcbLDo2W",consumer_secret="nlyqdj6fcffE2yb1vA0022h1yYZvaSDeln8fBhiabdfUK0ZGUx",access_token="787902154883280896-DEcAyQIIJtxEssA9MyepL37CX6ELJ2O",access_secret="dsYHugfWDR1XdsIiwFyPJV06mer46BbYZwkwiSc7fh7wr")
+   mach_tweets = searchTwitter("Donald trump",n=100,lang='en')
+   mach_text = sapply(mach_tweets,function(x)x$getText())
+   mach_corpus = Corpus(VectorSource(mach_text))
+   tdn = TermDocumentMatrix(mach_corpus,control = list(removePunctuation = TRUE,stopwords=c("Donald","trump",stopwords("english")),removeNumbers=TRUE,tolower =TRUE))
+   png("donaldtrump.png",width = 12,height = 8,units="in",res = 300)
+   wordcloud(tdm$word,tdm$freq,random.order = FALSE,colors = brewer.pal(8,"Dark2"))
+   dev.off()
+   
