@@ -40,3 +40,66 @@ x <- c(1:5);y<-x
    library(aplpack)
    attach(mtcars)
    bagplot(wt,mpg,xlab ="Car weight",ylab="miles per gallon",main ="bagplot" )
+  #simple histogram
+   
+   hist(mtcars$mpg)
+   
+   # histogram with color
+   hist(mtcars$mpg,breaks = 12,col ="red")
+   
+   #density plot
+   d <- density(mtcars$mpg)
+   plot(d)
+   
+   #filed density plot
+   d <- density(mtcars$mpg)
+   plot(d,main="kernal desity")
+   polygon(d,col = "red",border = "blue")
+   
+   #comparing
+   library(sm)
+   attach(mtcars)
+   
+   #comparing
+   library(car)
+   scatterplot(mpg~wt|cyl,data = mtcars,xlab="weight",ylab="miles",main ="enhanced",labels =row.names(mtcars))
+   
+   
+   library("party")
+   str(iris)
+   iris_ctree <- ctree(Species~Sepal.Length+Sepal.Width+Petal.Length+Petal.Width,data = iris)
+   print(iris_ctree)
+   plot(iris_ctree)
+   
+   #correlation cor.test(x,y)
+   attach(mtcars)
+   cor.test(mpg,wt)
+   # syntax with 
+   with(mtcars,cor.test(mpg,wt))
+   
+   #Simple linear regression
+   library(MASS)
+   attach(cats)
+   View(cats)
+   lm(Hwt~Bwt,data=cats)
+   lm.out = lm(Hwt~Bwt,data = cats)
+   lm.out
+   summary(lm.out)
+   plot(Hwt~Bwt,data=cats)
+   abline(lm.out,col="red")
+   par(mfrow=c(1,1))
+   plot(lm.out)
+   
+   #mutiple linear regression
+   fit <- lm(clinically.important.brain.injury~age.65+basal.skull.fracture+loss.of.consciousness,data = head_injury)
+   summary(fit)
+   coefficients(fit)
+   
+   #Logistic regression
+   
+   attach(Titanic)
+   train(1:1313)
+   test(1:100)
+   model <- glm(Survived ~ PClass+Age,data = Titanic)
+   summary(model)
+   plot(model)
