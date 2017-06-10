@@ -35,3 +35,8 @@ x <- c(1:5);y<-x
    x3 <- mtcars$mpg[mtcars$cyl == 8]
    vioplot(x1,x2,x3,names = c("4 cyl","6 cyl","8 cyl"),col = "gold")
    title("Violin plots of miles per gallon")
+
+# Bag plot
+   library(aplpack)
+   attach(mtcars)
+   bagplot(wt,mpg,xlab ="Car weight",ylab="miles per gallon",main ="bagplot" )
