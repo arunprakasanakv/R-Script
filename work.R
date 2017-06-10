@@ -6,3 +6,6 @@ x <- c(1:5);y<-x
    heading = paste("type=",opts[i])
    plot(x,y,type = "n",main = heading)
    lines(x,y,type = opts[i])}
+
+# dot chart
+ dotchart(mtcars$mpg,labels = row.names(mtcars),cex = .7,main = "gas milage for car models",xlab = "Miles per gallon")
